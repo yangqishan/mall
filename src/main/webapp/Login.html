@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.1.8.2.js" type="text/javascript"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/slide.js"></script>
+<script src="js/common_js.js" type="text/javascript"></script>
+<script src="js/jquery.foucs.js" type="text/javascript"></script>
+<script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=402727"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- 注意，验证码本身是不需要 jquery 库，此处使用 jquery 仅为了在 demo 使用，减少代码量 -->
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+    <!-- 引入 gt.js，既可以使用其中提供的 initGeetest 初始化函数 -->
+    <script src="js/gt.js"></script>
+    <title>登陆</title>
+</head>
+
+<body>
+<!--顶部样式-->
+<div class="top_header">
+<em class="left_img"></em>
+<div class="header clearfix" id="header">
+<a href="#" class="logo_img"></a>
+<div class="header_Section">
+ <div class="shortcut">
+  <ul>
+   <li  class="hd_menu_tit"><em class="login_img"></em><a href="Login.html">登录</a></li>
+   <li  class="hd_menu_tit"><em  class="registered_img"></em><a href="registered.html">注册</a></li>
+   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="shopping_favorites.html">收藏夹</a></li>
+   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="shopping_cart.html">购物车（0）</a></li>
+  </ul>
+ </div>
+ <div class="nav" id="Navigation">
+  <ul class="Navigation_name"> 
+   <li class=""><a href="index.html">首页</a></li>
+   <li class=""><a href="Products.html">所有果蔬</a></li>
+   <li class=""><a href="Group_buy.html">活动专区</a></li>
+   <li class=""><a href="Product-List.html">水果</a></li>
+   <li class=""><a href="Product-List.html">蔬菜</a></li>
+   <li class=""><a href="Product-List.html">肉类</a></li>
+   <li class=""><a href="user.html">会员中心</a></li>
+  </ul>
+ </div>
+ <script>$("#Navigation").slide({titCell:".Navigation_name li"});</script>
+</div>
+</div>
+<em class="right_img"></em>
+</div>
+<!---->
+<div><a href="#"><img src="images/AD_page_img_02.png" width="100%"/></a></div>
+<div class="Inside_pages clearfix">
+<!--登录样式-->
+  <div class="login">
+       <div class="style_login clearfix">
+       <div>
+          <div class="layout">
+          
+            <div class="login_title">登录</div>
+            <div class="item item-fore1"><label for="loginname" class="login-label name-label"></label><input name="" type="text" class="text" placeholder="请输入用户"></div>
+            <div class="item item-fore2"><label for="nloginpwd" class="login-label pwd-label"></label><input name="" type="password" class="text" placeholder="用户密码"> </div>
+              <div id="captcha1">
+                  <p id="wait1" class="show">正在加载验证码......</p>
+              </div>
+            <div class="auto-login"><label class="auto-label"><input type="checkbox" id="rememberMe"><span>记住账号和密码</span></label></div>
+            <div class="login-btn"><a href="javascript:;" id="button" class="btn_login">登&nbsp;&nbsp;&nbsp;&nbsp;录</a></div>
+            <div class="login_link"><a href="">免费注册</a> | <a href="#">忘记密码</a></div>
+          </div>
+          </div>
+       </div>
+       <div class="login_img"><img src="images/login_img_03.png" /></div>
+  </div>
+</div>
+<!--底部样式-->
+<div class="footer">
+ <div class="footer_img_bg"></div>
+ <div class="footerbox">
+  <div class="footer_info">
+    <div class="footer_left">
+     <a href="#"><img src="images/logo.png" /></a>
+     <p class="erwm">
+     <img src="images/erweim.png"  width="80px" height="80px"/>
+     <img src="images/erweim.png"  width="80px" height="80px"/>
+     <p>
+    </div>
+    <div class="helper_right clearfix">
+     <dl>
+      <dt><em class="guide"></em>新手指南</dt>
+      <dd><a href="#">注册新用户</a></dd>
+      <dd><a href="#">实名认证</a></dd>
+      <dd><a href="#">找回密码</a></dd>
+     </dl>
+     <dl>
+      <dt ><em class="h_about"></em>关于我们</dt>
+      <dd><a href="#">关于我们</a></dd>
+      <dd><a href="#">政策服务</a></dd>
+      <dd><a href="#">常见问题</a></dd>
+     </dl>
+     <dl>
+      <dt ><em class="h_conact"></em>联系我们</dt>
+      <dd><a href="#">联系我们</a></dd>
+      <dd><a href="#">在线客服</a></dd>
+     </dl>
+    </div>
+  </div>
+ </div>
+</div>
+<script src="./lib/layui/layui.js" charset="utf-8"></script>
+<script src="./js/x-admin.js"></script>
+<script src="./js/x-layui.js" charset="utf-8"></script>
+<script src="./js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+
+    //加载页面自动执行
+    $(document).ready(function(){
+
+    });
+
+
+    //滑动验证
+    var handler1 = function (captchaObj) {
+        $("#button").click(function (e){
+            var result = captchaObj.getValidate();
+            if (!result) {
+                layer.msg('请滑动图片完成拼图！！！',{icon:5,time:1500});
+
+                setTimeout(function () {
+                    $("#notice1").hide();
+                }, 2000);}
+            else{
+               /* //alert("验证成功，登录异步刷新！！！");
+                var username=$("#username").val();
+                var pswd=$("#pswd").val();
+                $.ajax({
+                    type:"post",
+                    url:"findByName",
+                    dataType:"json",
+                    data:{
+                        name:username,
+                        pswd:pswd
+                    },
+                    success:function (data) {
+                        if(data==0){
+                            layer.msg('不存在该用户',{icon:5,time:1500});
+                        }
+                        if(data==2){
+                            layer.msg('密码错误',{icon:5,time:1500});
+                        }
+                        if(data==1){
+                            layer.msg('登陆成功',{icon:6,time:1500},function (index) {
+                                window.location.href="index.jsp";
+                            });
+
+                        }
+                    }
+                });*/
+            }
+
+            e.preventDefault();
+        });
+
+        // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
+        captchaObj.appendTo("#captcha1");
+        captchaObj.onReady(function () {
+            $("#wait1").hide();
+        });
+        // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
+    };
+    $.ajax({
+        url: "/gt/register1?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 调用 initGeetest 初始化参数
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                product: "float", // 产品形式，包括：float，popup
+                width: "100%"
+                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handler1);
+        }
+    });
+</script>
+</body>
+</html>

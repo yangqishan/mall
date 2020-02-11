@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myframe.dao.CartDao">
+
+    <select id="getAll" resultType="com.example.myframe.entity.CartBean">
+
+    </select>
+	<select id="get" resultType="com.example.myframe.entity.CartBean" parameterType="String">
+
+	</select>
+
+    <select id="getPage" resultType="com.example.myframe.entity.CartBean">
+
+    </select>
+</mapper>
+

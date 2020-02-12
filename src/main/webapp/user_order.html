@@ -53,22 +53,15 @@
 <div class="header clearfix" id="header">
 <a href="#" class="logo_img"></a>
 <div class="header_Section">
- <div class="shortcut">
-  <ul>
-   <li  class="hd_menu_tit"><em class="login_img"></em><a href="Login.html">登录</a></li>
-   <li  class="hd_menu_tit"><em  class="registered_img"></em><a href="registered.html">注册</a></li>
-   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="shopping_favorites.html">收藏夹</a></li>
-   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="shopping_cart.html">购物车（0）</a></li>
-  </ul>
- </div>
+    <div id="head"></div>
  <div class="nav" id="Navigation">
   <ul class="Navigation_name"> 
    <li class=""><a href="index.html">首页</a></li>
    <li class=""><a href="Products.html">所有果蔬</a></li>
    <li class=""><a href="Group_buy.html">活动专区</a></li>
-   <li class=""><a href="Product-List.html">水果</a></li>
-   <li class=""><a href="Product-List.html">蔬菜</a></li>
-   <li class=""><a href="Product-List.html">肉类</a></li>
+      <li class=""><a href="integral.html">积分商城</a></li>
+      <li class=""><a href="Product-List.html">特价</a></li>
+      <li class=""><a href="Product-List1.html">鲜肉海鲜</a></li>
    <li class=""><a href="user.html">会员中心</a></li>
   </ul>
  </div>
@@ -102,7 +95,7 @@
        <li><a href="user.html"><em></em><span>个人信息</span></a></li>
        <li><a href="user_Password.html"><em></em><span>修改密码</span></a></li>
        <li><a href="user_order.html"><em></em><span>我的订单</span></a></li>
-       <li><a href="integral.html"><em></em><span>我的积分</span></a></li>
+       <li><a href="user_integral.html"><em></em><span>我的积分</span></a></li>
        <li><a href="shopping_favorites.html"><em></em><span>我的收藏</span></a></li>
        <li><a href="user_address.html"><em></em><span>收货地址管理</span></a></li>
       </ul>
@@ -212,41 +205,12 @@
   </div>
 </div>
 <!--底部样式-->
-<div class="footer">
- <div class="footer_img_bg"></div>
- <div class="footerbox">
-  <div class="footer_info">
-    <div class="footer_left">
-     <a href="#"><img src="images/logo.png" /></a>
-     <p class="erwm">
-     <img src="images/erweim.png"  width="80px" height="80px"/>
-     <img src="images/erweim.png"  width="80px" height="80px"/>
-     <p>
-    </div>
-    <div class="helper_right clearfix">
-     <dl>
-      <dt><em class="guide"></em>新手指南</dt>
-      <dd><a href="#">注册新用户</a></dd>
-      <dd><a href="#">实名认证</a></dd>
-      <dd><a href="#">找回密码</a></dd>
-     </dl>
-     <dl>
-      <dt ><em class="h_about"></em>关于我们</dt>
-      <dd><a href="#">关于我们</a></dd>
-      <dd><a href="#">政策服务</a></dd>
-      <dd><a href="#">常见问题</a></dd>
-     </dl>
-     <dl>
-      <dt ><em class="h_conact"></em>联系我们</dt>
-      <dd><a href="#">联系我们</a></dd>
-      <dd><a href="#">在线客服</a></dd>
-     </dl>
-    </div>
-  </div>
- </div> 
- <div class=" Copyright ">
-   @2015 四川莆田特色馆版权所有 
- </div>
-</div>
+<div id="foot"></div>
+<script>
+    $(function(){
+        $("#head").load("head.html");
+        $("#foot").load("foot.html");
+    });
+</script>
 </body>
 </html>

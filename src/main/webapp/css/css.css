@@ -142,12 +142,12 @@
 .Inside_pages .list_style .btn_style a.buy_btn{float:left}
 .Inside_pages .list_style .btn_style a.Join_btn{ background-position:left -32px; float:right}
 .Inside_pages .list_style a.Collect{
-	 position:absolute; 
-	 width:20px; 
-	 height:16px; 
-	 background:url("../images/Complex_img.png") no-repeat; 
-	 background-position:right 0px; 
-	 top:240px; 
+	 position:absolute;
+	 width:20px;
+	 height:16px;
+	 background:url("../images/Complex_img.png") no-repeat;
+	 background-position:right 0px;
+	 top:240px;
 	 right:20px;
 }
 .Inside_pages .list_style a.Collect:hover{background:url(../images/Complex_img.png) no-repeat; background-position:right -17px;}

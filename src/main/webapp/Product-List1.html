@@ -45,7 +45,7 @@
 <!--位置-->
 <div class="Bread_crumbs">
  <div class="Inside_pages clearfix">
-   <div class="left">当前位置：<a href="#">首页</a>&gt;<a href="#">特价</a></div>
+   <div class="left">当前位置：<a href="#">首页</a>&gt;<a href="#">鲜肉海鲜</a></div>
    <div class="right Search">
    <form>
     <input name="" type="text"  class="Search_Box"/>
@@ -228,6 +228,40 @@
     $(function(){
         $("#head").load("head.html");
         $("#foot").load("foot.html");
+    });
+</script>
+<script src="./lib/layui/layui.js" charset="utf-8"></script>
+<script src="./js/x-admin.js"></script>
+<script src="./js/x-layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            products:[]
+        }
+    })
+    //加载页面自动执行
+    $(document).ready(function(){
+        $.ajax({
+            url:"goods/getByType",
+            type:"post",
+            dataType:"json",
+            data:{
+
+            },
+            success:function (data) {
+                console.log(data.data)
+            }
+        })
     });
 </script>
 </body>

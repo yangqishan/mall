@@ -12,7 +12,9 @@ import java.util.List;
 public interface GoodsService extends IService<GoodsBean>{
     List<GoodsBean> getAll();
 
+    List<GoodsBean> getByType(String type);
     IPage<GoodsBean> getPage();
+
 
     GoodsBean get(String name);
 }

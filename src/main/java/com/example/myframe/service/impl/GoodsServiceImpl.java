@@ -26,6 +26,11 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsDao,GoodsBean> implements
     }
 
     @Override
+    public List<GoodsBean> getByType(String type) {
+        return goodsDao.getByType(type);
+    }
+
+    @Override
     public IPage<GoodsBean> getPage() {
         return goodsDao.getPage();
     }

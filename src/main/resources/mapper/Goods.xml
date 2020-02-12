@@ -3,8 +3,12 @@
 <mapper namespace="com.example.myframe.dao.GoodsDao">
 
     <select id="getAll" resultType="com.example.myframe.entity.GoodsBean">
-
+    SELECT * from goods
     </select>
+    <select id="getByType" resultType="com.example.myframe.entity.GoodsBean" parameterType="string">
+        SELECT * from goods where type=#{type}
+    </select>
+
 	<select id="get" resultType="com.example.myframe.entity.GoodsBean" parameterType="String">
 
 	</select>

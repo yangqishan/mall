@@ -13,6 +13,10 @@ public interface GoodsService extends IService<GoodsBean>{
     List<GoodsBean> getAll();
 
     List<GoodsBean> getByType(String type);
+    List<GoodsBean> getSale(String type);
+
+    List<GoodsBean> getByFlag(String flag);
+
     IPage<GoodsBean> getPage();
 
 

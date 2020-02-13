@@ -16,6 +16,10 @@ public interface GoodsDao extends BaseMapper<GoodsBean> {
     List<GoodsBean> getAll();
 
     List<GoodsBean> getByType(String type);
+
+    List<GoodsBean> getSale(String type);
+
+    List<GoodsBean> getByFlag(String flag);
     /**
      * 分页查询
      * @return

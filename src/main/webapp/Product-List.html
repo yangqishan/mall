@@ -55,169 +55,38 @@
  </div>
 </div>
 <!--产品列表-->
-<div class="Inside_pages clearfix">
+<div class="Inside_pages clearfix" id="app">
 <div class="margintop">
  <DIV class="left_style">
-   <div class="title_img_p"><img src="images/p_vegetables_img.png" /></div>
+   <div class="title_img_p"></div>
    <div class="ranking">
     <div class="ranking_title"><span>销量</span>排行</div>
     <ul class="ranking_list">
-     <li class="">
-     <em class="ranking_label">1</em>
-     <a href="#" class="img"> <img src="images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li>
-     <li class="">
-     <em class="ranking_label">2</em>
-     <a href="#" class="img"> <img src="images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">3</em>
-     <a href="#" class="img"> <img src="images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">4</em>
-     <a href="#" class="img"> <img src="images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">5</em>
-     <a href="#" class="img"> <img src="images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li>
+        <li class="" v-for="(p,index) of sale">
+            <em class="ranking_label">{{index+1}}</em>
+            <a href="#" class="img"> <img v-bind:src="p.img" width="100px" height="100px" /></a>
+            <p class="ranking_name">{{p.name}}</p>
+            <p class="price"><b>￥</b>{{p.price}}元</p>
+            <p><a href="#">立即查看></a></p>
+        </li>
     </ul>
    </div>
  </DIV>
  <DIV class="right_style">
     <ul class="list_style">
-     <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#" class="Collect"></a>
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="#" class="Collect"></a>
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="#" class="Collect"></a>
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="#" class="Collect"></a>
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="#" class="Collect"></a>
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li> <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li> <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li> <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="#"><img src="images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
-        </div>
-       </li>
+        <li class="clearfix" v-for="product of products">
+            <div class="product_lists clearfix">
+                <a style="cursor: pointer;" class="Collect" title="收藏" ></a>
+                <a href="#"><img v-bind:src="product.img" /></a>
+                <p class="title_p_name">{{product.name}}</p>
+                <p class="title_Profile">{{product.details}}</p>
+                <div class="Group_p_buy">
+                    <span class="price"><b>￥</b>{{product.discountPrice}}</span>
+                    <span class="Group_Number" style="margin-left: 60px"><em></em>原价：{{product.price}}元</span>
+                </div>
+                <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
+            </div>
+        </li>
     </ul>
  </DIV>
  </div>
@@ -228,6 +97,44 @@
     $(function(){
         $("#head").load("head.html");
         $("#foot").load("foot.html");
+    });
+</script>
+<script src="./lib/layui/layui.js" charset="utf-8"></script>
+<script src="./js/x-admin.js"></script>
+<script src="./js/x-layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            products:[],
+            sale:[]
+        }
+    })
+    //加载页面自动执行
+    $(document).ready(function(){
+        $.ajax({
+            url:"goods/getByFalg",
+            type:"post",
+            dataType:"json",
+            data:{
+                flag:"特价",
+                goodsType:""
+            },
+            success:function (data) {
+                app.products=data.data.products
+                app.sale=data.data.sale
+            }
+        })
     });
 </script>
 </body>

@@ -31,6 +31,15 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsDao,GoodsBean> implements
     }
 
     @Override
+    public List<GoodsBean> getByFlag(String flag) {
+        return goodsDao.getByFlag(flag);
+    }
+    @Override
+    public List<GoodsBean> getSale(String type) {
+        return goodsDao.getSale(type);
+    }
+
+    @Override
     public IPage<GoodsBean> getPage() {
         return goodsDao.getPage();
     }

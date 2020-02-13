@@ -5,11 +5,12 @@
 <link href="css/css.css" rel="stylesheet" type="text/css" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.min.1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/slide.js"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/jquery.foucs.js" type="text/javascript"></script>
+
 <title>产品</title>
 </head>
 
@@ -71,7 +72,10 @@
         <a href="#"><img v-bind:src="product.img" /></a>
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
-        <p class="price"><b>￥</b>{{product.price}}</p>
+           <div class="Group_p_buy">
+               <span class="price"><b>￥</b>{{product.price}}</span>
+               <span class="Group_Number" style="margin-left: 80px"><em></em>{{product.purchase}}人购买</span>
+           </div>
         <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
         </div>
        </li>
@@ -96,7 +100,10 @@
         <a href="#"><img v-bind:src="product.img" /></a>
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
-        <p class="price"><b>￥</b>{{product.price}}</p>
+           <div class="Group_p_buy">
+               <span class="price"><b>￥</b>{{product.price}}</span>
+               <span class="Group_Number" style="margin-left: 80px"><em></em>{{product.purchase}}人购买</span>
+           </div>
         <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
         </div>
        </li>

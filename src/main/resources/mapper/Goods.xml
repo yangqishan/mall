@@ -5,20 +5,26 @@
     <select id="getAll" resultType="com.example.myframe.entity.GoodsBean">
     SELECT * from goods
     </select>
+    <!-- 根据类型查询-->
     <select id="getByType" resultType="com.example.myframe.entity.GoodsBean" parameterType="string">
         SELECT * from goods where type=#{type}
     </select>
+    <!-- 根据标识查询-->
     <select id="getByFlag" resultType="com.example.myframe.entity.GoodsBean" parameterType="string">
           SELECT * from goods where flag=#{flag}
     </select>
+    <!-- 获取销售量-->
     <select id="getSale" resultType="com.example.myframe.entity.GoodsBean" parameterType="string">
        SELECT * from goods where type LIKE concat('%',#{type},'%') ORDER BY purchase desc LIMIT 0,10
     </select>
-
+    <!-- 模糊查询-->
 	<select id="get" resultType="com.example.myframe.entity.GoodsBean" parameterType="String">
-
+    SELECT * from goods where name LIKE concat('%',#{name},'%') or details LIKE concat('%',#{name},'%')ORDER BY purchase desc
 	</select>
-
+    <!--查询收藏次数排行-->
+    <select id="getFavorites" resultType="com.example.myframe.entity.GoodsBean">
+         SELECT * from goods ORDER BY favorites  desc LIMIT 0,5
+    </select>
     <select id="getPage" resultType="com.example.myframe.entity.GoodsBean">
 
     </select>

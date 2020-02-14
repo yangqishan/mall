@@ -45,7 +45,12 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsDao,GoodsBean> implements
     }
 
     @Override
-    public GoodsBean get(String name) {
+    public List<GoodsBean> getFavorites() {
+        return goodsDao.getFavorites();
+    }
+
+    @Override
+    public List<GoodsBean> get(String name) {
         return goodsDao.get(name);
     }
 }

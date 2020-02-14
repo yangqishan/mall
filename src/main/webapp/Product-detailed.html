@@ -47,12 +47,9 @@
 <div class="Bread_crumbs">
  <div class="Inside_pages clearfix">
    <div class="left">当前位置：<a href="#">首页</a>&gt;<a href="#">素菜馆</a></div>
-   <div class="right Search">
-   <form>
-    <input name="" type="text"  class="Search_Box"/>
-    <input name="" type="button"  name="" class="Search_btn"/>
-    </form>
-   </div>
+     <div class="right Search" id="search">
+
+     </div>
  </div>
 </div>
 <!--商品详细介绍-->
@@ -192,6 +189,7 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
     $(function(){
         $("#head").load("head.html");
         $("#foot").load("foot.html");
+        $("#search").load("search.html")
     });
 </script>
 </body>

@@ -20,13 +20,15 @@ public interface GoodsDao extends BaseMapper<GoodsBean> {
     List<GoodsBean> getSale(String type);
 
     List<GoodsBean> getByFlag(String flag);
+
+    List<GoodsBean> getFavorites();
     /**
      * 分页查询
      * @return
      */
     IPage<GoodsBean> getPage();
 
-    GoodsBean get(String name);
+    List<GoodsBean> get(String name);
 
 }
 

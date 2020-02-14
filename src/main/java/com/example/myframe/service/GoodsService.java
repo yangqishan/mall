@@ -19,6 +19,7 @@ public interface GoodsService extends IService<GoodsBean>{
 
     IPage<GoodsBean> getPage();
 
+    List<GoodsBean> getFavorites();
 
-    GoodsBean get(String name);
+    List<GoodsBean> get(String name);
 }

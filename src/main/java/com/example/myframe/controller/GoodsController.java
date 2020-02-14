@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 商品控制层
@@ -61,6 +62,23 @@ public class GoodsController {
         map.put("products",products);
         List<GoodsBean> sale=goodsService.getSale(goodsType);
         map.put("sale",sale);
+        return new RestResponse(ResultEnum.SUCCESS,map);
+    }
+
+    /**
+     * 模糊搜索
+     * @param searchValue
+     * @return
+     */
+    @RequestMapping(value="/find")
+    public RestResponse find(@RequestParam(value="searchValue") String searchValue){
+        //定义一个map集合
+        Map<String,Object> map=new HashMap<>();
+        //获取模糊查询的结果
+        List<GoodsBean> list=goodsService.get(searchValue);
+        map.put("products",list);
+        List<GoodsBean> list1=goodsService.getFavorites();
+        map.put("favorites",list1);
         return new RestResponse(ResultEnum.SUCCESS,map);
     }
 }

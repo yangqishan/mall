@@ -67,12 +67,12 @@
      <ul class="list_style">
      <li class="clearfix" v-for="product of products">
        <div class="product_lists clearfix">
-        <a href="#" class="Collect"></a>
+
         <a style="cursor: pointer;"><img v-bind:src="product.img" /></a>
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
         <p class="price">{{product.discountPrice}}积分</p>
-        <p class="btn_style"><span class="Original_price">原价：{{product.price}}元</span><a href="javascript;('')" class="integral_buy_btn"></a></p>
+        <p class="btn_style"><span class="Original_price">原价：{{product.price}}元</span><a href="Orders.html" class="integral_buy_btn"></a></p>
         </div>
        </li>
     </ul>

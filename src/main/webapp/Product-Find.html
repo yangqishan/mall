@@ -72,7 +72,7 @@
  </DIV>
  <DIV class="right_style">
     <ul class="list_style">
-        <li class="clearfix" v-for="product of products">
+        <li class="clearfix" v-for="product of products" v-if="product.flag=='正常'">
             <div class="product_lists clearfix" >
                 <a style="cursor: pointer;" class="Collect" title="收藏" ></a>
                 <a style="cursor: pointer;" v-on:click="getDetails(product.id)"><img v-bind:src="product.img" /></a>
@@ -83,7 +83,7 @@
                     <span class="price"><b>￥</b>{{product.price}}</span>
                     <span class="Group_Number" style="margin-left: 80px"><em></em>{{product.purchase}}人购买</span>
                 </div>
-                <p class="btn_style"><a href="javascript;('')" class="buy_btn"></a><a href="javascript;('')" class="Join_btn"></a></p>
+                <p class="btn_style" ><a style="cursor: pointer;"  class="buy_btn" v-on:click="getDetails(product.id)"></a><a style="cursor: pointer;" v-on:click="addCart(product.id,product.flag,product.price)" class="Join_btn"></a></p>
             </div>
         </li>
     </ul>
@@ -123,6 +123,12 @@
             getDetails:function(id){
                 //去后台访问详情信息
                 window.open("Product-detailed.html?id="+id)
+            },
+            addCart:function (id,flag,price) {
+                //添加到购物车
+                var userId=$("#userId").attr("title");
+                var number=1;
+                cart(id,flag,userId,price,number);
             }
         }
     })

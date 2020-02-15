@@ -9,8 +9,12 @@
 	USER
     </select>
 	<select id="get" resultType="com.example.myframe.entity.UserBean" parameterType="String">
-       SELECT pswd from user where name=#{name}
+       SELECT * from user where name=#{name}
 	</select>
+
+    <select id="getByXh" resultType="com.example.myframe.entity.UserBean" parameterType="String">
+        SELECT * from user where xh=#{xh}
+    </select>
 
     <select id="getPage" resultType="com.example.myframe.entity.UserBean">
 

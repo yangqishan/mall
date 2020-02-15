@@ -7,7 +7,6 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.min.1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/slide.js"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/jquery.foucs.js" type="text/javascript"></script>
 <script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=402727"></script>
@@ -27,7 +26,6 @@
 <div class="header clearfix" id="header">
 <a href="#" class="logo_img"></a>
 <div class="header_Section">
-    <div id="head"></div>
  <div class="nav" id="Navigation">
   <ul class="Navigation_name"> 
    <li class=""><a href="index.html">首页</a></li>
@@ -39,7 +37,6 @@
    <li class=""><a href="user.html">会员中心</a></li>
   </ul>
  </div>
- <script>$("#Navigation").slide({titCell:".Navigation_name li"});</script>
 </div>
 </div>
 <em class="right_img"></em>
@@ -53,14 +50,14 @@
           <div class="layout">
           
             <div class="login_title">登录</div>
-            <div class="item item-fore1"><label for="loginname" class="login-label name-label"></label><input name="" type="text" class="text" placeholder="请输入用户"></div>
-            <div class="item item-fore2"><label for="nloginpwd" class="login-label pwd-label"></label><input name="" type="password" class="text" placeholder="用户密码"> </div>
+            <div class="item item-fore1"><label for="loginname" class="login-label name-label"></label><input id="xh" type="text" class="text" placeholder="请输入用户"></div>
+            <div class="item item-fore2"><label for="nloginpwd" class="login-label pwd-label"></label><input id="password" type="password" class="text" placeholder="用户密码"> </div>
               <div id="captcha1">
                   <p id="wait1" class="show">正在加载验证码......</p>
               </div>
             <div class="auto-login"><label class="auto-label"><input type="checkbox" id="rememberMe"><span>记住账号和密码</span></label></div>
-            <div class="login-btn"><a href="javascript:;" id="button" class="btn_login">登&nbsp;&nbsp;&nbsp;&nbsp;录</a></div>
-            <div class="login_link"><a href="">免费注册</a> | <a href="#">忘记密码</a></div>
+            <div class="login-btn"><a id="button" class="btn_login">登&nbsp;&nbsp;&nbsp;&nbsp;录</a></div>
+            <div class="login_link"><a href="registered.html">免费注册</a> | <a href="#">忘记密码</a></div>
           </div>
           </div>
        </div>
@@ -88,12 +85,6 @@
 
     });
 
-    //加载页面自动执行
-    $(document).ready(function(){
-
-    });
-
-
     //滑动验证
     var handler1 = function (captchaObj) {
         $("#button").click(function (e){
@@ -105,32 +96,25 @@
                     $("#notice1").hide();
                 }, 2000);}
             else{
-               /* //alert("验证成功，登录异步刷新！！！");
-                var username=$("#username").val();
-                var pswd=$("#pswd").val();
+                //alert("验证成功，登录异步刷新！！！");
+                var xh=$("#xh").val();
+                var password=$("#password").val();
                 $.ajax({
                     type:"post",
-                    url:"findByName",
+                    url:"user/login",
                     dataType:"json",
                     data:{
-                        name:username,
-                        pswd:pswd
+                        xh:xh,
+                        password:password
                     },
                     success:function (data) {
-                        if(data==0){
-                            layer.msg('不存在该用户',{icon:5,time:1500});
-                        }
-                        if(data==2){
-                            layer.msg('密码错误',{icon:5,time:1500});
-                        }
-                        if(data==1){
-                            layer.msg('登陆成功',{icon:6,time:1500},function (index) {
-                                window.location.href="index.jsp";
-                            });
-
-                        }
+                       if(data.data.length==0){
+                           window.location.href="index.html"
+                       }else{
+                           layer.msg(data.data,{icon:5,time:1500});
+                       }
                     }
-                });*/
+                });
             }
 
             e.preventDefault();

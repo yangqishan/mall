@@ -135,4 +135,15 @@ public class GoodsController {
 
         return new RestResponse(ResultEnum.SUCCESS,goodsVo);
     }
+
+    /**
+     *搜索查询可能喜欢
+     * @param name
+     * @return
+     */
+    @RequestMapping(value="getLike")
+    public RestResponse getLike(@RequestParam(value="name") String name){
+        List<GoodsBean> like=goodsService.getLike(name);
+        return new RestResponse(ResultEnum.SUCCESS,like);
+    }
 }

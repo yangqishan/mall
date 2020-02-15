@@ -5,10 +5,15 @@
     <select id="getAll" resultType="com.example.myframe.entity.CartBean">
 
     </select>
-	<select id="get" resultType="com.example.myframe.entity.CartBean" parameterType="String">
-
+	<select id="get" resultType="com.example.myframe.entity.CartBean" parameterType="com.example.myframe.entity.CartBean">
+        SELECT * from cart where goods_id=#{goodsId} and user_xh=#{userXh}
 	</select>
-
+    <insert id="add" parameterType="com.example.myframe.entity.CartBean">
+        insert into cart(user_xh,goods_id,price,number,flag,create_date,update_date) VALUES (#{userXh},#{goodsId},#{price},#{number},#{flag},now(),now())
+    </insert>
+    <update id="edit" parameterType="com.example.myframe.entity.CartBean">
+        update cart set number=#{number},flag=#{flag},price=#{price} where goods_id=#{goodsId}
+    </update>
     <select id="getPage" resultType="com.example.myframe.entity.CartBean">
 
     </select>

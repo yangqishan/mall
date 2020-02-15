@@ -14,4 +14,6 @@ public interface UserService extends IService<UserBean>{
     IPage<UserBean> getPage();
 
     UserBean get(String name);
+
+    UserBean getByXh(String xh);
 }

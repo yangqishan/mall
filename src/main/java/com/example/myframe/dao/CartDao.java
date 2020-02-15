@@ -20,8 +20,11 @@ public interface CartDao extends BaseMapper<CartBean> {
      */
     IPage<CartBean> getPage();
 
-    CartBean get(String name);
+    CartBean get(CartBean cart);
 
+    void edit(CartBean cart);
+
+    void add(CartBean cartBean);
 }
 
 

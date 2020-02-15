@@ -8,12 +8,16 @@
     FROM
 	USER
     </select>
-	<select id="get" resultType="com.example.myframe.entity.FavoritesBean" parameterType="String">
-
+	<select id="get" resultType="com.example.myframe.entity.FavoritesBean" parameterType="com.example.myframe.entity.FavoritesBean">
+      SELECT * from favorites where goods_id=#{goodsId} and user_xh=#{userXh}
 	</select>
 
     <select id="getPage" resultType="com.example.myframe.entity.FavoritesBean">
 
     </select>
+
+    <insert id="add" parameterType="com.example.myframe.entity.FavoritesBean">
+        insert into favorites(user_xh,goods_id,create_date,update_date) VALUES (#{userXh},#{goodsId},now(),now())
+    </insert>
 </mapper>
 

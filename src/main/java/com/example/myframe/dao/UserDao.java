@@ -20,6 +20,8 @@ public interface UserDao extends BaseMapper<UserBean> {
 
     UserBean get(String name);
 
+    UserBean getByXh(String xh);
+
 
 }
 

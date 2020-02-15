@@ -50,6 +50,11 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsDao,GoodsBean> implements
     }
 
     @Override
+    public List<GoodsBean> getLike(String name) {
+        return goodsDao.getLike(name);
+    }
+
+    @Override
     public List<GoodsBean> get(String name) {
         return goodsDao.get(name);
     }

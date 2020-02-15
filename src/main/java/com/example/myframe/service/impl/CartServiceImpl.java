@@ -31,7 +31,16 @@ public class CartServiceImpl extends ServiceImpl<CartDao,CartBean> implements Ca
     }
 
     @Override
-    public CartBean get(String name) {
-        return cartDao.get(name);
+    public CartBean get(CartBean cart) {
+        return cartDao.get(cart);
+    }
+    @Override
+    public void edit(CartBean cart) {
+        cartDao.edit(cart);
+    }
+
+    @Override
+    public    void add(CartBean cartBean) {
+        cartDao.add(cartBean);
     }
 }

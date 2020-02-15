@@ -13,8 +13,9 @@ import lombok.NoArgsConstructor;
 public class CartBean extends DateBean{
     @TableId
     private int id;
-    private int userId;//用户id
+    private String userXh;//会员账号
     private int goodsId;//商品id
+    private Float price;//商品价格
     private int number;//购买数量
     private String flag;//标识
 

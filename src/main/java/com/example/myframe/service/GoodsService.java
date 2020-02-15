@@ -21,5 +21,7 @@ public interface GoodsService extends IService<GoodsBean>{
 
     List<GoodsBean> getFavorites();
 
+    List<GoodsBean> getLike(String name);
+
     List<GoodsBean> get(String name);
 }

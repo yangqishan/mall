@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class FavoritesBean {
     @TableId
     private int id;
-    private int userId;//用户id
+    private String userXh;//用户账号
     private int goodsId;//商品id
     private String flag;//标识
 }

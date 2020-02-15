@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class OrderDetailsBean extends DateBean{
     @TableId
     private int id;
-    private int userId;//会员id
+    private String userXh;//会员账号
     private int number;//商品总数量
     private Float money;//总金额
     private String status;//状态

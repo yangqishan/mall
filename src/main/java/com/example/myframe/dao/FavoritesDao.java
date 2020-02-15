@@ -21,7 +21,9 @@ public interface FavoritesDao extends BaseMapper<FavoritesBean> {
      */
     IPage<FavoritesBean> getPage();
 
-    FavoritesBean get(String name);
+    FavoritesBean get(FavoritesBean favorites);
+
+    void add(FavoritesBean favoritesBean);
 
 }
 

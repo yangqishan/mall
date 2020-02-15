@@ -14,5 +14,6 @@ public interface FavoritesService extends IService<FavoritesBean>{
 
     IPage<FavoritesBean> getPage();
 
-    FavoritesBean get(String name);
+    FavoritesBean get(FavoritesBean favorites);
+    void add(FavoritesBean favoritesBean);
 }

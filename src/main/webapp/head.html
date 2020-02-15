@@ -5,13 +5,75 @@
 </head>
 
 <body>
-<div class="shortcut">
+<div class="shortcut" id="user">
  <ul>
-  <li  class="hd_menu_tit"><em class="login_img"></em><a href="Login.html">登录</a></li>
-  <li  class="hd_menu_tit"><em  class="registered_img"></em><a href="registered.html">注册</a></li>
-  <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="shopping_favorites.html">收藏夹</a></li>
-  <li  class="hd_menu_tit"><em class="cart_img"></em><a href="shopping_cart.html">购物车（0）</a></li>
+  <div v-if="name==''" style="display: inline-block">
+   <li  class="hd_menu_tit"><em class="login_img"></em><a href="Login.html">登录</a></li>
+   <li  class="hd_menu_tit"><em class="registered_img"></em><a href="registered.html">注册</a></li>
+  </div>
+  <div v-else style="display: inline-block">
+   <li  class="hd_menu_tit"><a style="cursor: pointer;color: red" id="userId" v-bind:title="user.xh">{{name}}</a></li>
+   <li  class="hd_menu_tit"><a style="cursor: pointer;color: red" v-on:click="exit()">退出</a></li>
+  </div>
+
+  <div v-if="name!=''" style="display: inline-block">
+   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="shopping_favorites.html">收藏夹</a></li>
+   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="shopping_cart.html">购物车（0）</a></li>
+  </div>
+
  </ul>
 </div>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+
+  var app1=new Vue({
+      el:"#user",
+      data:{
+         user:[],
+         name:''
+      },
+      methods:{
+          exit:function () {
+              $.ajax({
+                  url:"user/exit",
+                  type:"post",
+                  dataType:"json",
+                  data:{
+
+                  },
+                  success:function (data) {
+                      //退出账户 跳转页面
+                      window.location.href="index.html"
+                  }
+              })
+
+          }
+      }
+  })
+    $(document).ready(function(){
+
+        //加载页面自动执行
+        $.ajax({
+            url:"user/get",
+            type:"post",
+            dataType:"json",
+            data:{
+                name:""
+            },
+            success:function (data) {
+                app1.user=data.data
+                app1.name=data.data.name
+            }
+        })
+    });
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return decodeURI(r[2]);
+        return null;
+    }
+</script>
 </body>
 </html>

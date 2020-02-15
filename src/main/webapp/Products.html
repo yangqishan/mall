@@ -10,8 +10,9 @@
 <script type="text/javascript" src="js/slide.js"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/jquery.foucs.js" type="text/javascript"></script>
-
-<title>产品</title>
+    <!--外部引用js-->
+    <script type="text/javascript" src="js/goods/getDetails.js"></script>
+ <title>产品</title>
 </head>
 
 <body>
@@ -66,7 +67,7 @@
        <li class="clearfix" v-for="product of products">
        <div class="product_lists clearfix" v-if="product.type=='水果'">
         <a style="cursor: pointer;" class="Collect" title="收藏" ></a>
-        <a href="#"><img v-bind:src="product.img" /></a>
+        <a style="cursor: pointer;"  v-on:click="getDetails(product.id)"><img v-bind:title="product.name" v-bind:src="product.img" /></a>
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
            <div class="Group_p_buy">
@@ -94,7 +95,7 @@
        <li class="clearfix" v-for="product of products">
        <div class="product_lists clearfix" v-if="product.type=='蔬菜'">
         <a style="cursor: pointer;" class="Collect" title="收藏" ></a>
-        <a href="#"><img v-bind:src="product.img" /></a>
+        <a style="cursor: pointer;"  v-on:click="getDetails(product.id)"><img v-bind:title="product.name" v-bind:src="product.img" /></a>
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
            <div class="Group_p_buy">
@@ -130,12 +131,21 @@
         layer = layui.layer;//弹出层
 
     });
+
+    //定义vue对象
     var app=new Vue({
         el:"#app",
         data:{
             products:[]
+        },
+        methods:{
+            getDetails:function(id){
+               //去后台访问详情信息
+               window.open("Product-detailed.html?id="+id)
+            }
         }
     })
+
     //加载页面自动执行
     $(document).ready(function(){
         $.ajax({

@@ -10,6 +10,8 @@
 <script type="text/javascript" src="js/slide.js"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/jquery.foucs.js" type="text/javascript"></script>
+    <!--外部引用js-->
+    <script type="text/javascript" src="js/goods/getDetails.js"></script>
 <title>积分商城</title>
 </head>
 
@@ -66,7 +68,7 @@
      <li class="clearfix" v-for="product of products">
        <div class="product_lists clearfix">
         <a href="#" class="Collect"></a>
-        <a href="#"><img v-bind:src="product.img" /></a>
+        <a style="cursor: pointer;"><img v-bind:src="product.img" /></a>
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
         <p class="price">{{product.discountPrice}}积分</p>
@@ -104,6 +106,12 @@
         el:"#app",
         data:{
             products:[]
+        },
+        methods:{
+            getDetails:function(id){
+                //去后台访问详情信息
+                window.open("Product-detailed.html?id="+id)
+            }
         }
     })
     //加载页面自动执行

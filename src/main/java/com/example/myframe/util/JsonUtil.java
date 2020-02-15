@@ -51,7 +51,7 @@ public class JsonUtil {
      * @param json json字符串
      * @param valueType 对象类型
      * @return 序列化后的对象
-     *
+     *movieEntity=JsonUtil.decode(jsonObject.toString(),MovieEntity.class);
      */
     public static <T> T decode(String json, Class<T> valueType) {
         try {
@@ -68,7 +68,8 @@ public class JsonUtil {
      * @param json json字符串
      * @param typeReference 对象类型
      * @return 序列化后的对象
-     *
+     * List<MovieEntity> list1= new ArrayList<MovieEntity>();
+     *   list1=JsonUtil.decode(jsonArray.toString(), new TypeReference<List<MovieEntity>>() {});
      */
     public static <T> T decode(String json, TypeReference<T> typeReference) {
         try {

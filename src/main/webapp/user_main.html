@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员</title>
+</head>
+<body>
+
+<ul class="Section" id="app1">
+    <li><a href="user.html"><em></em><span>个人信息</span></a></li>
+    <li><a href="user_Password.html"><em></em><span>修改密码</span></a></li>
+    <li><a href="user_integral.html"><em></em><span>我的积分</span></a></li>
+    <li><a href="user_address.html"><em></em><span>收货地址管理</span></a></li>
+    <li><a v-on:click="orders()" style="cursor: pointer"><em></em><span>我的订单</span></a></li>
+    <li><a v-on:click="favorites()" style="cursor: pointer" ><em></em><span>我的收藏</span></a></li>
+    <li><a v-on:click="cart()" style="cursor: pointer"><em></em><span>我的购物车</span></a></li>
+
+</ul>
+</body>
+
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+
+    var app1=new Vue({
+        el:"#app1",
+        data:{
+            user:[],
+            xh:''
+        },
+        methods:{//查看订单
+            orders:function () {
+                var userId=$("#userId").attr("title")
+                window.location.href="user_order.html?userId="+userId
+            },//查看收藏夹
+            favorites:function () {
+                var userId=$("#userId").attr("title")
+                window.location.href="shopping_favorites.html?userId="+userId
+            },//查看购物车
+            cart:function () {
+                var userId=$("#userId").attr("title")
+                window.location.href="shopping_cart.html?userId="+userId
+            }
+
+        }
+
+
+    })
+
+</script>
+</html>

@@ -16,4 +16,10 @@ public interface UserService extends IService<UserBean>{
     UserBean get(String name);
 
     UserBean getByXh(String xh);
+
+    void add(UserBean userBean);
+
+    void edit(UserBean userBean);
+
+    void editPwd(UserBean userBean);
 }

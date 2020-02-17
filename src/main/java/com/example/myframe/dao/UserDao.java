@@ -22,7 +22,11 @@ public interface UserDao extends BaseMapper<UserBean> {
 
     UserBean getByXh(String xh);
 
+    void add(UserBean userBean);
 
+    void edit(UserBean userBean);
+
+    void editPwd(UserBean userBean);
 }
 
 

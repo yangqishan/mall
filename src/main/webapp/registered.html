@@ -45,14 +45,15 @@
      <div class="register_style">
       <div class="u_register">
         <ul>
-         <li><label class="name">手机号码：</label><input name="" type="text"  class="text_Add"/></li>
-         <li><label class="name">用户名称：</label><input name="" type="text"  class="text_Add"/></li>
-         <li><label class="name">设置密码：</label><input name="" type="password"  class="text_Add" placeholder="6-20个字符，由字母、数字和符号的两种以上组合"/></li>
-         <li><label class="name">确认密码：</label><input name="" type="password"  class="text_Add"/></li>
-         <li><label class="name">&nbsp;验证码：</label><input name="" type="text"  class="text_verification"/> &nbsp;<a href="javascript:loadimage();"><img alt="看不清请点我！" name="randImage" id="randImage" src="image.jsp" width="60" height="20" border="1" align="absmiddle"> </a></li>
+         <li><label class="name">账&nbsp;&nbsp;号：</label><input id="xh" type="text"  class="text_Add"/></li>
+         <li><label class="name">姓&nbsp;&nbsp;名：</label><input id="name" type="text"  class="text_Add"/></li>
+         <li><label class="name">手机号码：</label><input id="tel" type="text"  class="text_Add"/></li>
+         <li><label class="name">密&nbsp;&nbsp;码：</label><input id="pwd" type="password"  class="text_Add" placeholder="6-20个字符，由字母、数字和符号的两种以上组合"/></li>
+         <li><label class="name">确认密码：</label><input id="pwd1" type="password"  class="text_Add"/></li>
+         <li><label class="name">&nbsp;验证码：</label><input id="code" type="text"  class="text_verification"/> &nbsp;<a href="javascript:loadimage();"><img alt="看不清请点我！" name="randImage" id="randImage" src="image.jsp" width="60" height="20" border="1" align="absmiddle"> </a></li>
         </ul>
          <div class="auto-register"><label class="auto-label"><input type="checkbox" id="rememberMe"><span><a href="#">《木兮商贸城网站注册协议》</a></span></label></div>
-         <div class="register-btn"><a href="javascript:;" class="btn_register">注&nbsp;&nbsp;&nbsp;&nbsp;册</a></div>
+         <div class="register-btn"><a href="javascript:resdister();" class="btn_register">注&nbsp;&nbsp;&nbsp;&nbsp;册</a></div>
       </div>
      </div>
      <div class="register_img"><img src="images/Register_img.png" /></div>
@@ -83,6 +84,40 @@
      $(document).ready(function(){
 
      });
+
+     //注册
+     function resdister() {
+         var xh=$("#xh").val();
+         var name=$("#name").val();
+         var tel=$("#tel").val();
+         var pwd=$("#pwd").val();
+         var pwd1=$("#pwd1").val();
+         var code=$("#code").val();
+         if(pwd!=pwd1){
+             layer.msg("两次密码不一致",{icon:2,time:1500});
+         }else{
+             //去后端判断其他信息
+             $.ajax({
+                 url:"user/register",
+                 type:"post",
+                 dadaType:"json",
+                 data:{
+                     xh:xh,
+                     name:name,
+                     tel:tel,
+                     pwd:pwd,
+                     code:code
+                 },
+                 success:function (data) {
+                     if(data.data=="注册成功"){
+                         layer.msg(data.data,{icon:6,time:1500});
+                         window.location.href="Login.html"
+                     }
+                     layer.msg(data.data,{icon:5,time:1500});
+                 }
+             })
+         }
+     }
      //加载验证码
      function loadimage(){
          document.getElementById("randImage").src = "image.jsp?"+Math.random();

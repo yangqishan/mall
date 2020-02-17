@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<div class="shortcut" id="user">
+<div class="shortcut" id="user1">
  <ul>
   <div v-if="name==''" style="display: inline-block">
    <li  class="hd_menu_tit"><em class="login_img"></em><a href="Login.html">登录</a></li>
@@ -17,8 +17,8 @@
   </div>
 
   <div v-if="name!=''" style="display: inline-block">
-   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="shopping_favorites.html">收藏夹</a></li>
-   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="shopping_cart.html">购物车（0）</a></li>
+   <li  class="hd_menu_tit"><em class="Collect_img"></em><a style="cursor: pointer;" v-on:click="goFavorites(user.xh)">收藏夹</a></li>
+   <li  class="hd_menu_tit"><em class="cart_img"></em><a style="cursor: pointer;" v-on:click="goCart(user.xh)">购物车</a></li>
   </div>
 
  </ul>
@@ -26,8 +26,8 @@
 <script type="text/javascript" src="js/vue.js"></script>
 <script type="text/javascript">
 
-  var app1=new Vue({
-      el:"#user",
+  var user1=new Vue({
+      el:"#user1",
       data:{
          user:[],
          name:''
@@ -46,7 +46,12 @@
                       window.location.href="index.html"
                   }
               })
-
+          },//去收藏夹
+          goFavorites:function (id) {
+              window.location.href="shopping_favorites.html?userId="+id
+          },//去购物车
+          goCart:function (id) {
+              window.location.href="shopping_cart.html?userId="+id
           }
       }
   })
@@ -58,11 +63,12 @@
             type:"post",
             dataType:"json",
             data:{
-                name:""
+
             },
             success:function (data) {
-                app1.user=data.data
-                app1.name=data.data.name
+                user1.user=data.data
+                user1.name=data.data.name
+
             }
         })
     });

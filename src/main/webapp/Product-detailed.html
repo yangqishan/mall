@@ -124,7 +124,7 @@
       </div>
       <div class="product_Quantity">销量：{{products.purchase}}</div>
       <div class="operating">
-       <a href="Orders.html"  class="buy_btn"></a>
+       <a style="cursor: pointer;" v-on:click="orders(products.id)"  class="buy_btn"></a>
        <a style="cursor: pointer;" v-on:click="addCart(products.id,price,number)" class="Join_btn"></a>
       </div>
     </div>
@@ -191,6 +191,14 @@
                 var flag=$("#b").text()+"--"+$("#s").text()
                 var userId=$("#userId").attr("title");
                 cart(id,flag,userId,price,number);
+            },
+            orders:function (id) {
+                //去订单页面
+                var userId=$("#userId").attr("title");//会员账号
+                var flag=$("#b").text()+"--"+$("#s").text()//商品表示
+                var number=this.number//数量
+                var price=this.price//单价
+                orders(id,userId,flag,number,price)
             }
         }
     })
@@ -234,7 +242,7 @@
         })
 
     })
-
+    //获取路径上的参数
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);

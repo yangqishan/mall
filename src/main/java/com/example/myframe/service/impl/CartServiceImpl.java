@@ -8,6 +8,7 @@ import com.example.myframe.entity.CartBean;
 import com.example.myframe.entity.UserBean;
 import com.example.myframe.service.CartService;
 import com.example.myframe.service.UserService;
+import com.example.myframe.vo.CartFavoritesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,12 @@ public class CartServiceImpl extends ServiceImpl<CartDao,CartBean> implements Ca
     public CartBean get(CartBean cart) {
         return cartDao.get(cart);
     }
+
+    @Override
+    public List<CartFavoritesVo> getByXh(String xh) {
+        return cartDao.getByXh(xh);
+    }
+
     @Override
     public void edit(CartBean cart) {
         cartDao.edit(cart);

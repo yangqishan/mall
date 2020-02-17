@@ -17,6 +17,7 @@ public class CartBean extends DateBean{
     private int goodsId;//商品id
     private Float price;//商品价格
     private int number;//购买数量
+    private Float money;//金额
     private String flag;//标识
 
 }

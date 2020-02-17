@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.myframe.entity.CartBean;
 import com.example.myframe.entity.UserBean;
+import com.example.myframe.vo.CartFavoritesVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,8 @@ public interface CartDao extends BaseMapper<CartBean> {
     IPage<CartBean> getPage();
 
     CartBean get(CartBean cart);
+
+    List<CartFavoritesVo> getByXh(String xh);
 
     void edit(CartBean cart);
 

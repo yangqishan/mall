@@ -3,15 +3,15 @@
 <mapper namespace="com.example.myframe.dao.FavoritesDao">
 
     <select id="getAll" resultType="com.example.myframe.entity.FavoritesBean">
-    SELECT
-    *
-    FROM
-	USER
+
     </select>
 	<select id="get" resultType="com.example.myframe.entity.FavoritesBean" parameterType="com.example.myframe.entity.FavoritesBean">
       SELECT * from favorites where goods_id=#{goodsId} and user_xh=#{userXh}
 	</select>
 
+    <select id="getByXh" resultType="com.example.myframe.vo.CartFavoritesVo" parameterType="string">
+     select * from favorites,goods where favorites.user_xh=#{xh} and goods.id=favorites.goods_id
+    </select>
     <select id="getPage" resultType="com.example.myframe.entity.FavoritesBean">
 
     </select>

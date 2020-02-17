@@ -19,5 +19,17 @@
     <select id="getPage" resultType="com.example.myframe.entity.UserBean">
 
     </select>
+
+    <insert id="add" parameterType="com.example.myframe.entity.UserBean">
+        insert into user(xh,name,password,age,sex,tel,address,level,integral,img,create_date,update_date,memo)
+         VALUES (#{xh},#{name},#{password},#{age},#{sex},#{tel},#{address},#{level},#{integral},#{img},now(),now(),#{memo})
+    </insert>
+
+    <update id="edit" parameterType="com.example.myframe.entity.UserBean">
+        update user set name=#{name},sex=#{sex},age=#{age},tel=#{tel} where xh=#{xh}
+    </update>
+    <update id="editPwd" parameterType="com.example.myframe.entity.UserBean">
+        update user set password=#{password} where xh=#{xh}
+    </update>
 </mapper>
 

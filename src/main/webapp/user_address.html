@@ -48,69 +48,76 @@
  </div>
 </div>
 <!--用户中心(地址管理界面)-->
-<div class="Inside_pages clearfix">
+<div class="Inside_pages clearfix" id="app">
  <div class="clearfix user" >
    <!--左侧菜单栏样式-->
      <div class="user_left">
       <div class="user_info">
        <div class="Head_portrait"><img src="images/product_img_17.png"  width="80px" height="80px"/><!--头像区域--></div>
-       <div class="user_name">用户蜜甘草<a href="#">[个人资料]</a></div>
+       <div class="user_name">{{xh}}<a href="#">[个人资料]</a></div>
       </div>
-      <ul class="Section">
-       <li><a href="user.html"><em></em><span>个人信息</span></a></li>
-       <li><a href="user_Password.html"><em></em><span>修改密码</span></a></li>
-       <li><a href="user_order.html"><em></em><span>我的订单</span></a></li>
-       <li><a href="user_integral.html"><em></em><span>我的积分</span></a></li>
-       <li><a href="shopping_favorites.html"><em></em><span>我的收藏</span></a></li>
-       <li><a href="user_address.html"><em></em><span>收货地址管理</span></a></li>
-      </ul>
+      <div id="user"></div>
     </div>
     <!--右侧内容样式-->
-    <div class="user_right">
+    <div class="user_right" >
       <div class="user_Borders">
-       <div class="title_name">
-        <span class="name">地址管理</span>
-       </div>
-       <div class="about_user_info">
-         <form id="form1" name="form1" method="post" action="">   
-       <div class="user_layout">
-         <ul>
-          <li><label class="user_title_name">收件人姓名：</label><input name="" type="text" class="add_text"><em>*</em></li>
-          <li><label class="user_title_name">省&nbsp;市&nbsp;区：</label><em>*</em></li>
-          <li><label class="user_title_name">收货地址：</label><input name="" type="text" class="add_text"><em>*</em></li>
-          <li><label class="user_title_name">邮&nbsp;&nbsp;&nbsp;&nbsp;编：</label><input name="" type="text" class="add_text"><em>*</em></li>
-          <li><label class="user_title_name">手&nbsp;机&nbsp;号：</label><input name="" type="text" class="add_text"><em>*</em></li>
-          <li><label class="user_title_name">固定电话：</label><input name="" type="text" class="add_text"></li>         
-         </ul>
-         <div class="operating_btn"><input name="name" type="submit" value="确认" class="submit—btn"></div>
-         </div>
-          </form>       
-       </div>
+
        <!--地址列表-->
        <div class="Address_List">
-        <div class="title_name"><span class="name">用户地址列表</span></div>
+        <div id="address">
+         <div class="title_name">
+          <span class="name" >添加地址</span>
+          <a style="cursor: pointer;color: red" v-on:click="clear()">-清空数据</a>
+         </div>
+         <div class="about_user_info">
+          <div>
+           <div class="user_layout">
+            <ul>
+             <li><label class="user_title_name">收件人姓名：</label><input id="name" type="text" v-bind:value="ads.name"  class="add_text"><em>*</em></li>
+             <li><label class="user_title_name">收货地址：</label><input id="userAddress" type="text" v-bind:value="ads.userAddress" class="add_text"><em>*</em></li>
+             <li><label class="user_title_name">邮&nbsp;&nbsp;&nbsp;箱：</label><input id="email"  v-bind:value="ads.email" type="text" class="add_text"><em>*</em></li>
+             <li><label class="user_title_name">手&nbsp;机&nbsp;号：</label><input id="tel" type="text"  v-bind:value="ads.tel" class="add_text"><em>*</em></li>
+             <li><label class="user_title_name">邮&nbsp;&nbsp;&nbsp;编：</label><input id="postcode" v-bind:value="ads.postcode" type="text" class="add_text"><em>*</em></li>
+            </ul>
+            <div class="operating_btn" v-if="ads==''"><input name="name" v-on:click="add(xh)" value="添加" class="submit—btn"></div>
+            <div class="operating_btn" v-else><input name="name" v-on:click="edits(ads.id)" value="修改" class="submit—btn"></div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="title_name">
+         <span class="name">地址管理</span>
+         <a style="cursor: pointer;color: red" v-on:click="open()">+添加地址</a>
+        </div>
         <div class="list">
          <table>
          <thead>
           <td class="list_name_title0">收件人姓名</td>
-          <td class="list_name_title1">地区</td>
+          <td class="list_name_title1">详细地址</td>
           <td class="list_name_title2">邮编</td>
           <td class="list_name_title3">电话</td>
-          <td class="list_name_title4">收货地址</td>
+          <td class="list_name_title4">邮箱</td>
           <td class="list_name_title5">操作</td>
-         </thead>        
-        
-          <tr><td>小组</td><td>四川成都五华区</td><td>601022</td><td>12345678909</td><td>产业业务宝贵机会</td><td><a href="#">修改</a><a href="#">删除</a></td></tr>
-            <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+         </thead>
+
+          <tr v-for="(a,index) of address" v-bind:id="'a'+index">
+           <td>{{a.name}}</td>
+           <td>{{a.userAddress}}</td>
+           <td>{{a.postcode}}</td>
+           <td>{{a.tel}}</td>
+           <td>{{a.email}}</td>
+           <td><a style="cursor: pointer" v-on:click="edit(a.id,index)">修改</a><a style="cursor: pointer" v-on:click="del(a.id,index)">删除</a>
+           </td>
+          </tr>
+
          </table>
         </div>
        </div>
+
       </div>
    </div>
  </div>
 </div>
-<!--底部样式-->
-<div id="foot"></div>
 <script src="./lib/layui/layui.js" charset="utf-8"></script>
 <script src="./js/x-admin.js"></script>
 <script src="./js/x-layui.js" charset="utf-8"></script>
@@ -118,9 +125,151 @@
 <script>
     $(function(){
         $("#head").load("head.html");
-        $("#foot").load("foot.html");
+        $("#user").load("user_main.html");
         $("#search").load("search.html")
     });
+</script>
+
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+    var app=new Vue({
+        el:"#app",
+        data:{
+            address:[],//所有数据
+            ads:[],//单个数据
+            name:'',
+            xh:'',
+            index:''
+        },
+        methods:{
+            //隐藏和打开
+            open:function () {
+             $("#address").slideToggle("slow");
+            },
+            //编辑
+            edit:function (id,index) {
+              $("#address").slideDown();
+              this.index=index
+              this.ads=this.address[index]
+            },
+            //修改
+            edits:function (id) {
+                //去数据库修改数据
+                $.ajax({
+                    url:"user/editAddress",
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        id:id,
+                        name:$("#name").val(),
+                        userAddress:$("#userAddress").val(),
+                        email:$("#email").val(),
+                        tel:$("#tel").val(),
+                        postcode:$("#postcode").val()
+                    },
+                    success:function (data) {
+                        layer.msg('修改成功', {icon: 1,time:1500});
+
+                    }
+                })
+                this.ads.name=$("#name").val()
+                this.ads.userAddress=$("#userAddress").val()
+                this.ads.email=$("#email").val()
+                this.ads.tel=$("#tel").val()
+                this.ads.postcode=$("#postcode").val()
+                this.address[this.index]=this.ads
+                this.ads=''
+            },
+            clear:function () {
+                $("#name").val("")
+                $("#userAddress").val("")
+                $("#email").val("")
+                $("#tel").val("")
+                $("#postcode").val("")
+                //重新设置为空
+                this.ads=''
+            },
+            //删除地址
+            del:function (id,indexs) {
+
+                layer.confirm('确认要删除吗？',function(index){
+                  //捉到所有被选中的，发异步进行删除
+                    $.ajax({
+                        url:"user/delAddress",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            id:id
+                        },
+                        success:function (data) {
+
+                        }
+                    })
+                    $("#a"+indexs).remove()
+                  layer.msg('删除成功', {icon: 1});
+                 });
+
+            },
+            //添加收货地址
+            add:function (xh) {
+                var name=$("#name").val()
+                var userAddress=$("#userAddress").val()
+                var email=$("#email").val()
+                var tel=$("#tel").val()
+                var postcode=$("#postcode").val()
+                //异步请求
+                $.ajax({
+                   url:"user/addAddress",
+                   type:"post",
+                   dataType:"json",
+                   data:{
+                       userXh:xh,
+                       name:name,
+                       userAddress:userAddress,
+                       email:email,
+                       tel:tel,
+                       postcode:postcode
+                   },
+                    success:function (data) {
+                        layer.msg('添加成功', {icon: 1,time:1500})
+                        $("#name").val("")
+                        $("#userAddress").val("")
+                        $("#email").val("")
+                        $("#tel").val("")
+                        $("#postcode").val("")
+                        app.address
+                        //加一条数据
+                        app.address=app.address.concat(data.data)
+                       //app.address[app.address.length]=data.data
+                    }
+                })
+            }
+        }
+    })
+    //页面加载的时候自动执行
+    $(document).ready(function () {
+        $("#address").hide()
+        //异步请求
+        $.ajax({
+            url:"user/getAddress",
+            type:"post",
+            dataType:"json",
+            data:{
+                userXh:''
+            },
+            success:function (data) {
+                app.address=data.data
+                app.xh=app.address[0].userXh
+            }
+        })
+    })
 </script>
 </body>
 </html>

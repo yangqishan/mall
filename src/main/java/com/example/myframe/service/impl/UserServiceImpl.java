@@ -36,4 +36,19 @@ public class UserServiceImpl extends ServiceImpl<UserDao,UserBean> implements Us
     public UserBean getByXh(String xh) {
         return userDao.getByXh(xh);
     }
+
+    @Override
+    public void add(UserBean userBean) {
+        userDao.add(userBean);
+    }
+
+    @Override
+    public void edit(UserBean userBean) {
+        userDao.edit(userBean);
+    }
+
+    @Override
+    public void editPwd(UserBean userBean) {
+        userDao.editPwd(userBean);
+    }
 }

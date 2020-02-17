@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myframe.dao.AddressDao">
+
+    <select id="getAll" resultType="com.example.myframe.entity.AddressBean">
+
+    </select>
+	<select id="get" resultType="com.example.myframe.entity.AddressBean" parameterType="String">
+      SELECT * from address where user_xh=#{userXh}
+	</select>
+
+    <select id="getPage" resultType="com.example.myframe.entity.AddressBean">
+
+    </select>
+    <update id="edit" parameterType="com.example.myframe.entity.AddressBean">
+        update address set name=#{name},user_address=#{userAddress},tel=#{tel},email=#{email},postcode=#{postcode},update_date=now() where id=#{id}
+    </update>
+
+    <insert id="add" parameterType="com.example.myframe.entity.AddressBean">
+        insert into address(user_xh,name,user_address,tel,email,postcode,create_date,update_date)
+        VALUES (#{userXh},#{name},#{userAddress},#{tel},#{email},#{postcode},now(),now())
+    </insert>
+</mapper>
+

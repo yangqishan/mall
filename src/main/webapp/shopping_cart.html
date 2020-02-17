@@ -7,7 +7,6 @@
 <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.min.1.8.2.js" type="text/javascript"></script>
 <script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/slide.js"></script>
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/jquery.foucs.js" type="text/javascript"></script>
     <!--外部引用js-->
@@ -34,7 +33,6 @@
    <li class=""><a href="user.html">会员中心</a></li>
   </ul>
  </div>
- <script>$("#Navigation").slide({titCell:".Navigation_name li"});</script>
 </div>
 </div>
 <em class="right_img"></em>
@@ -50,13 +48,13 @@
  </div>
 </div>
 <!--购物车样式-->
-<div class="Narrow">
+<div class="Narrow" id="app">
   <div class="shop_cart">
      <div class="schedule"></div>
      <div class="cart_style">
        <div class="title_name">
         <ul>
-         <li class="title_width"><label class="auto-label"><input type="checkbox" id="rememberMe"><span>全选</span></label></li>
+            <li class="title_width"><input type="checkbox" id="all" v-on:click="All()">全选</li>
          <li class="title_width1">商品信息</li>
          <li class="title_width2">单价</li>
          <li class="title_width3">数量</li>
@@ -65,109 +63,134 @@
         </ul>
        </div>
        <div class="list_style">
-        <div class="class_title">水果馆</div>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
+         <ul class="product_cart" v-for="(product,index) of products">
+         <li class="title_width"><input v-bind:id="index" type="checkbox" v-on:click="change(index)"></li>
          <li class="title_width1">
-         <a href="#" class="product_img left"><img src="images/product_img_17.png" /></a>
+         <a style="cursor: pointer" v-on:click="getDetails(product.goodsId)" class="product_img left"><img v-bind:src="product.img" /></a>
+
          <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
+         <a href="#" class="title_name">{{product.name}}</a>
+         <span>{{product.flag}}</span>
          </p>
          </li>
-         <li class="title_width2">￥23</li>
+         <li class="title_width2">￥{{product.price}}</li>
          <li class="title_width3">
            <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
+               <a v-if="product.number>1" style="cursor: pointer;"v-on:click="--product.number;product.money=0;product.money=product.number*product.price;change(index)" class="jian">-</a>
+               <a v-else  style="cursor: pointer;" class="jian"></a>
+               <input id="number" name="number" type="text" v-bind:value="product.number" class="number_text">
+               <a v-if="product.number<6" style="cursor: pointer;"v-on:click="++product.number;product.money=0;product.money=product.number*product.price;change(index)" class="jia">+</a>
+               <a v-else  style="cursor: pointer;" class="jian"></a>
 		 </div>        
          </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
-         </ul>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
-         <li class="title_width1">
-         <a href="#" class="product_img left"><img src="images/product_img_17.png" /></a>
-         <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
-         </p>
-         </li>
-         <li class="title_width2">￥23</li>
-         <li class="title_width3">
-           <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
-		 </div>        
-         </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
-         </ul>
-       </div>
-              <div class="list_style">
-        <div class="class_title">水果馆</div>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
-         <li class="title_width1">
-         <a href="#" class="product_img left"><img src="images/product_img_17.png" /></a>
-         <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
-         </p>
-         </li>
-         <li class="title_width2">￥23</li>
-         <li class="title_width3">
-           <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
-		 </div>        
-         </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
-         </ul>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
-         <li class="title_width1">
-         <a href="#" class="product_img left"><img src="images/product_img_17.png" /></a>
-         <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
-         </p>
-         </li>
-         <li class="title_width2">￥23</li>
-         <li class="title_width3">
-           <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
-		 </div>        
-         </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
+         <li class="title_width4">￥{{product.money}}</li>
+         <li class="title_width5"><a style="cursor: pointer" v-on:click="del(product.id)">删除</a></li>
          </ul>
        </div>
      </div>
      <!--操作-->
      <div class="cart_operating clearfix">
         <div class="cart_operating_style">
-           <div class="cart_price">商品总价：（不含运费）<b>￥545</b></div>
-           <div class="cart_btn"><a href="#" class="payment_btn"></a><a href="#" class="continue_btn"></a></div>
+            <div class="cart_price">商品个数：<b>{{sum}}</b> 商品总价：（不含运费）<b>￥{{Money}}</b></div>
+           <div class="cart_btn"><a href="#" class="payment_btn"></a><a href="Products.html" class="continue_btn"></a></div>
         </div>
      </div>
   </div>
 </div>
 <!--底部样式-->
 <div id="foot"></div>
+<script src="./lib/layui/layui.js" charset="utf-8"></script>
+<script src="./js/x-admin.js"></script>
+<script src="./js/x-layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/vue.js"></script>
 <script>
     $(function(){
         $("#head").load("head.html");
         $("#foot").load("foot.html");
         $("#search").load("search.html")
     });
+</script>
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+
+    //vue对象
+    var app=new Vue({
+        el:"#app",
+        data:{
+            sum:0,
+            products:[],
+            Money:0
+        },
+        methods:{
+            getDetails:function(id){
+                //去后台访问详情信息
+                window.open("Product-detailed.html?id="+id)
+            },
+            //修改价格统计总价
+            change:function (event) {
+                this.sum=0
+                this.Money=0
+                for(var i=0;i<this.products.length;i++){
+                    $("#all").prop("checked",false)
+                    if($("#"+i).is(':checked')){
+                        this.sum+=this.products[i].number
+                        this.Money+= this.products[i].money
+                    }
+                }
+            },
+            //统计总价
+            All:function () {
+                this.sum=0
+                this.Money=0
+                for(var i=0;i<this.products.length;i++){
+                    if($("#all").is(':checked')){
+                        $("#"+i).prop("checked",true)
+                        this.sum+=this.products[i].number
+                        this.Money+= this.products[i].money
+                    }else{
+                        $("#"+i).prop("checked",false)
+                    }
+                }
+
+            }
+        }
+    })
+
+    $(document).ready(function () {
+        //去数据库查询购物车的信息
+        var userId=getQueryString("userId")
+        $.ajax({
+            url:"cart/get",
+            type:"post",
+            dataType:"json",
+            data:{
+                xh:userId
+            },
+            success:function (data) {
+                console.log(data.data)
+                app.products=data.data
+            }
+        })
+    })
+    //获取路径上的参数
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return decodeURI(r[2]);
+        return null;
+    }
+    /*layer.confirm('确认要删除吗？',function(index){
+        //捉到所有被选中的，发异步进行删除
+        layer.msg('删除成功', {icon: 1});
+    });*/
 </script>
 </body>
 </html>

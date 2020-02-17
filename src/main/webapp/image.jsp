@@ -40,7 +40,7 @@ g.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nex
 g.drawString(rand,13*i+6,16); 
 }
 // 将认证码存入SESSION
-session.setAttribute("random",sRand);
+session.setAttribute("code",sRand);
 g.dispose(); 
 ImageIO.write(image, "JPEG", response.getOutputStream()); 
 %>

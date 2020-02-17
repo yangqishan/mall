@@ -50,22 +50,15 @@
  </div>
 </div>
 <!--用户中心(收藏)-->
-<div class="Inside_pages clearfix">
+<div class="Inside_pages clearfix" id="app">
   <div class="clearfix user" >
   <!--左侧菜单栏样式-->
    <div class="user_left">
       <div class="user_info">
        <div class="Head_portrait"><img src="images/product_img_17.png"  width="80px" height="80px"/><!--头像区域--></div>
-       <div class="user_name">用户蜜甘草<a href="#">[个人资料]</a></div>
+       <div class="user_name">{{xh}}<a href="#">[个人资料]</a></div>
       </div>
-      <ul class="Section">
-       <li><a href="user.html"><em></em><span>个人信息</span></a></li>
-       <li><a href="user_Password.html"><em></em><span>修改密码</span></a></li>
-       <li><a href="user_order.html"><em></em><span>我的订单</span></a></li>
-       <li><a href="integral.html"><em></em><span>我的积分</span></a></li>
-       <li><a href="shopping_favorites.html"><em></em><span>我的收藏</span></a></li>
-       <li><a href="user_address.html"><em></em><span>收货地址管理</span></a></li>
-      </ul>
+    <div id="user"></div>
     </div>
      <!--右侧内容样式-->
    <div class="user_right">
@@ -76,88 +69,25 @@
    <!--收藏样式-->
     <div class="Collect">
       <ul class="Collect_list">
-       <li>
+       <li v-bind:id="'p'+index" v-for="(product,index) of products">
        <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
-        </div>
-       </li>
-        <li>
-       <div class="Collect_pro_name">
-         <a href="#" class="delete_Collect"></a>
-        <p class="img center"><a href="#"><img src="images/product_img_17.png" /></a></p>
-        <p><a href="#">天然绿色多汁香甜无污染水蜜桃</a></p>
-        <p class="Collect_Standard">礼盒装</p>
-        <p class="Collect_price">￥234</p>
+         <a style="cursor: pointer" v-on:click="del(product.id,index)" class="delete_Collect"></a>
+        <p class="img center"><a style="cursor: pointer" v-on:click="getDetails(product.goodsId)"><img v-bind:src="product.img" /></a></p>
+        <p><a href="#">{{product.name}}</a></p>
+        <p class="Collect_Standard">{{product.flag}}</p>
+        <p class="Collect_price">￥{{product.price}}</p>
         </div>
        </li>
       </ul>
       <!--分页-->
-      <div class="pages_Collect clearfix">
+      <!--<div class="pages_Collect clearfix">
        <a href="#" class="on">《</a>
        <a href="#">1</a>
        <a href="#">2</a>
        <a href="#">3</a>
        <a href="#">4</a>
        <a href="#">》</a>
-      </div>
+      </div>-->
     </div>
     </div>
    </div>
@@ -168,9 +98,85 @@
 <script>
     $(function(){
         $("#head").load("head.html");
-        $("#foot").load("foot.html");
+        $("#user").load("user_main.html");
         $("#search").load("search.html")
     });
+</script>
+<script src="./lib/layui/layui.js" charset="utf-8"></script>
+<script src="./js/x-admin.js"></script>
+<script src="./js/x-layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+
+<script type="text/javascript">
+    layui.use(['laydate','element','laypage','layer'], function(){
+        $ = layui.jquery;//jquery
+        laydate = layui.laydate;//日期插件
+        lement = layui.element();//面包导航
+        laypage = layui.laypage;//分页
+        layer = layui.layer;//弹出层
+
+    });
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            products:[],
+            xh:""
+        },
+        methods:{
+            getDetails:function(id){
+                //去后台访问详情信息
+                window.open("Product-detailed.html?id="+id)
+            },//删除收藏夹
+            del:function(fid,id){
+                layer.confirm('确认要删除吗？',function(index){
+
+                    $("#p"+id).remove()
+                    //捉到所有被选中的，发异步进行删除
+                    $.ajax({
+                        url:"favorites/delById",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                          fid:fid
+                        },
+                        success:function (data) {
+
+                        }
+                    })
+                    layer.msg('删除成功', {icon: 1});
+                });
+
+            }
+        }
+    })
+    //加载页面自动执行
+    $(document).ready(function () {
+       //去数据库查询收藏夹
+        var userId=getQueryString("userId")
+        $.ajax({
+            url:"favorites/get",
+            type:"post",
+            dataType:"json",
+            data:{
+                xh:userId
+            },
+            success:function (data) {
+                app.products=data.data
+                app.xh=userId
+            }
+        })
+    })
+
+
+    //获取路径上的参数
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return decodeURI(r[2]);
+        return null;
+    }
 </script>
 </body>
 </html>

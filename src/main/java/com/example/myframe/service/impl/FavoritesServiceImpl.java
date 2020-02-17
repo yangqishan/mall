@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.myframe.dao.FavoritesDao;
 import com.example.myframe.entity.FavoritesBean;
 import com.example.myframe.service.FavoritesService;
+import com.example.myframe.vo.CartFavoritesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,11 @@ public class FavoritesServiceImpl extends ServiceImpl<FavoritesDao,FavoritesBean
     @Override
     public FavoritesBean get(FavoritesBean favorites) {
         return favoritesDao.get(favorites);
+    }
+
+    @Override
+    public List<CartFavoritesVo> getByXh(String xh) {
+        return favoritesDao.getByXh(xh);
     }
 
     @Override

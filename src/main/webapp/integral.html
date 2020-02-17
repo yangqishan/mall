@@ -72,7 +72,7 @@
         <p class="title_p_name">{{product.name}}</p>
         <p class="title_Profile">{{product.details}}</p>
         <p class="price">{{product.discountPrice}}积分</p>
-        <p class="btn_style"><span class="Original_price">原价：{{product.price}}元</span><a href="Orders.html" class="integral_buy_btn"></a></p>
+        <p class="btn_style"><span class="Original_price">原价：{{product.price}}元</span><a  style="cursor: pointer;" v-on:click="orders(product.id,product.flag,product.discountPrice)" class="integral_buy_btn"></a></p>
         </div>
        </li>
     </ul>
@@ -111,7 +111,13 @@
             getDetails:function(id){
                 //去后台访问详情信息
                 window.open("Product-detailed.html?id="+id)
-            }
+            },
+            orders:function (id,flag,discountPrice) {
+                //去订单页面
+                var userId=$("#userId").attr("title");//会员账号
+                var number=1//数量
+                orders(id,userId,flag,number,discountPrice)
+        }
         }
     })
     //加载页面自动执行

@@ -5,10 +5,13 @@ import com.example.myframe.common.response.RestResponse;
 import com.example.myframe.entity.FavoritesBean;
 import com.example.myframe.service.FavoritesService;
 import com.example.myframe.service.GoodsService;
+import com.example.myframe.vo.CartFavoritesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/favorites")
@@ -43,6 +46,22 @@ public class FavoritesController {
 
         }
         return new RestResponse(ResultEnum.SUCCESS,flag);
+    }
 
+    /**
+     * 根据账号去数据库查询收藏
+     * @param xh
+     * @return
+     */
+    @RequestMapping("get")
+    public RestResponse getByXh(@RequestParam(value="xh") String xh){
+        List<CartFavoritesVo> list=favoritesService.getByXh(xh);
+        return new RestResponse(ResultEnum.SUCCESS,list);
+    }
+    //删除收藏夹商品
+    @RequestMapping(value="/delById")
+    public RestResponse delById(@RequestParam(value="fid") int fid){
+        favoritesService.removeById(fid);
+        return new RestResponse(ResultEnum.SUCCESS);
     }
 }

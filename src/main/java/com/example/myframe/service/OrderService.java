@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.myframe.entity.OrderBean;
 import com.example.myframe.entity.UserBean;
+import com.example.myframe.vo.CartFavoritesVo;
 
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface OrderService extends IService<OrderBean>{
 
     IPage<OrderBean> getPage();
 
-    OrderBean get(String name);
+    List<CartFavoritesVo> getBydetailsId(int detailsId);
+
+    void add(List<OrderBean> list);
 }

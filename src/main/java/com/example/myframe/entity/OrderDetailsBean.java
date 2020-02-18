@@ -17,7 +17,8 @@ public class OrderDetailsBean extends DateBean{
     private int number;//商品总数量
     private Float money;//总金额
     private String status;//状态
-    private int orderNumber;//订单编号
+    private String orderNumber;//订单编号
     private String pay;//支付方式
-    private String address;//收货地址
+    private int addressId;//收货地址
+    private String flag;
 }

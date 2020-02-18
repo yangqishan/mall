@@ -12,7 +12,7 @@
         select * from cart,goods where cart.user_xh=#{xh} and goods.id=cart.goods_id
     </select>
     <insert id="add" parameterType="com.example.myframe.entity.CartBean">
-        insert into cart(user_xh,goods_id,price,number,flag,create_date,update_date) VALUES (#{userXh},#{goodsId},#{price},#{number},#{flag},now(),now())
+        insert into cart(user_xh,goods_id,price,number,money,flag,create_date,update_date) VALUES (#{userXh},#{goodsId},#{price},#{number},#{money},#{flag},now(),now())
     </insert>
     <update id="edit" parameterType="com.example.myframe.entity.CartBean">
         update cart set number=#{number},flag=#{flag},price=#{price} where goods_id=#{goodsId}
@@ -20,5 +20,9 @@
     <select id="getPage" resultType="com.example.myframe.entity.CartBean">
 
     </select>
+
+    <delete id="del" parameterType="com.example.myframe.entity.CartBean">
+        DELETE FROM  cart  WHERE user_xh=#{userXh} and goods_id=#{goodsId}
+    </delete>
 </mapper>
 

@@ -24,6 +24,8 @@ public interface GoodsDao extends BaseMapper<GoodsBean> {
     List<GoodsBean> getFavorites();
 
     List<GoodsBean> getLike(String name);
+
+    List<GoodsBean> gets(int [] goodsId);
     /**
      * 分页查询
      * @return

@@ -5,12 +5,45 @@
     <select id="getAll" resultType="com.example.myframe.entity.OrderBean">
 
     </select>
-	<select id="get" resultType="com.example.myframe.entity.OrderBean" parameterType="String">
-
+	<select id="getBydetailsId" resultType="com.example.myframe.vo.CartFavoritesVo" parameterType="int">
+         select
+        goods.id as goodsId,
+        goods.name as name,
+        goods.details as details,
+        goods.img as img,
+        orders.number as number,
+        orders.money as money,
+        orders.flag as flag
+        from goods,orders
+        where orderdetails_id=#{detailsId} and goods.id=orders.goods_id
 	</select>
 
     <select id="getPage" resultType="com.example.myframe.entity.OrderBean">
 
     </select>
+
+
+    <insert id="add" parameterType="java.util.List">
+        insert into orders
+        (
+        goods_id,
+        flag,
+        money,
+        number,
+        orderdetails_id,
+        create_date,
+        update_date
+        ) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.goodsId},
+            #{item.flag},
+            #{item.money},
+            #{item.number},
+            #{item.orderdetailsId},
+            now(),
+            now()
+            )
+        </foreach>
+    </insert>
 </mapper>
 

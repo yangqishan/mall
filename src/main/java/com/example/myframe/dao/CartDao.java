@@ -28,6 +28,8 @@ public interface CartDao extends BaseMapper<CartBean> {
     void edit(CartBean cart);
 
     void add(CartBean cartBean);
+
+    void del(CartBean cartBean);
 }
 
 

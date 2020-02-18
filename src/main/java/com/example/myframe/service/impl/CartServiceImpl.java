@@ -50,4 +50,9 @@ public class CartServiceImpl extends ServiceImpl<CartDao,CartBean> implements Ca
     public    void add(CartBean cartBean) {
         cartDao.add(cartBean);
     }
+
+    @Override
+    public void del(CartBean cartBean) {
+        cartDao.del(cartBean);
+    }
 }

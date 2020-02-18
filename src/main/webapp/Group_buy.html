@@ -70,7 +70,7 @@
           <li class="Group_price"><span class="Current_price"><i>￥</i>{{product.discountPrice}}</span> <span class="Group_List">原价：{{product.price}}</span></li>
           <li class="Group_p_buy">
            <span class="Group_Number"><em></em>{{product.purchase}}人购买</span>
-           <span class="Group_button right"><a style="cursor: pointer" v-on:click="orders(product.id,product.flag,product.price)" class="buy_button"></a></span>
+           <span class="Group_button right"><a style="cursor: pointer" v-on:click="orders(product.id,product.flag,product.discountPrice)" class="buy_button"></a></span>
           </li>
          </ul>
        </div>
@@ -93,7 +93,7 @@
           <li class="Group_price"><span class="Current_price"><i>￥</i>{{product.discountPrice}}</span> <span class="Group_List">原价：{{product.price}}</span></li>
           <li class="Group_p_buy">
            <span class="Group_Number"><em></em>{{product.purchase}}人购买</span>
-           <span class="Group_button right"><a style="cursor: pointer" v-on:click="orders(product.id,product.flag,product.price)" class="buy_button"></a></span>
+           <span class="Group_button right"><a style="cursor: pointer" v-on:click="orders(product.id,product.flag,product.discountPrice)" class="buy_button"></a></span>
           </li>
          </ul>
         </div>
@@ -114,7 +114,7 @@
         <li class="Group_price"><span class="Current_price"><i>￥</i>{{product.discountPrice}}</span> <span class="Group_List">原价：{{product.price}}</span></li>
         <li class="Group_p_buy">
            <span class="Group_Number">{{product.purchase}}人购买</span>
-           <span class="Group_button right"><a style="cursor: pointer;" v-on:click="orders(product.id,product.flag,product.price)"  class="buy_button"></a></span>
+           <span class="Group_button right"><a style="cursor: pointer;" v-on:click="orders(product.id,product.flag,product.discountPrice)"  class="buy_button"></a></span>
           </li>
         </ul>
         </div>

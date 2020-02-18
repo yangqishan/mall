@@ -58,4 +58,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsDao,GoodsBean> implements
     public List<GoodsBean> get(String name) {
         return goodsDao.get(name);
     }
+
+    @Override
+    public List<GoodsBean> gets(int[] goodsId) {
+        return goodsDao.gets(goodsId);
+    }
 }

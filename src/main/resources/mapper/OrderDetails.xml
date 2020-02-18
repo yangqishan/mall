@@ -2,15 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.myframe.dao.OrderDetailsDao">
 
-    <select id="getAll" resultType="com.example.myframe.entity.OrderDetailsBean">
-
+    <select id="getAll" resultType="com.example.myframe.vo.OrdersVo" parameterType="String">
+      SELECT
+        orderdetails.id as id,
+        orderdetails.user_xh as userXh,
+        number as number,
+        money as money,
+        status as status,
+        orderNumber as orderNumber,
+        pay as pay,
+        orderdetails.address_id as addressId,
+        orderdetails.create_date as createDate
+      from
+      address,orderdetails
+      where address.id=orderdetails.address_id and orderdetails.user_xh=#{userXh}
     </select>
+
 	<select id="get" resultType="com.example.myframe.entity.OrderDetailsBean" parameterType="String">
 
 	</select>
 
     <select id="getPage" resultType="com.example.myframe.entity.OrderDetailsBean">
 
+    </select>
+    <insert id="create" parameterType="com.example.myframe.entity.OrderDetailsBean">
+       INSERT into orderdetails (user_xh,number,money,status,orderNumber,pay,flag,address_id,create_date,update_date)
+       VALUES (#{userXh},#{number},#{money},#{status},#{orderNumber},#{pay},#{flag},#{addressId},now(),now())
+    </insert>
+
+    <select id="getOne" resultType="com.example.myframe.entity.OrderDetailsBean">
+        SELECT * from orderdetails ORDER BY id DESC LIMIT 1
     </select>
 </mapper>
 

@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@TableName("order")
+@TableName("orders")
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderBean extends DateBean{

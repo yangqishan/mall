@@ -31,5 +31,12 @@
     <select id="getLike" resultType="com.example.myframe.entity.GoodsBean" parameterType="String">
         SELECT * from goods where name LIKE concat('%',#{name},'%') or details LIKE concat('%',#{name},'%') LIMIT 0,5
     </select>
+
+    <select id="gets" resultType="com.example.myframe.entity.GoodsBean">
+        SELECT * FROM goods WHERE id in
+        <foreach collection="array" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>
 

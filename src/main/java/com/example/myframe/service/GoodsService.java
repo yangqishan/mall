@@ -24,4 +24,6 @@ public interface GoodsService extends IService<GoodsBean>{
     List<GoodsBean> getLike(String name);
 
     List<GoodsBean> get(String name);
+    //批量查询
+    List<GoodsBean> gets(int [] goodsId);
 }

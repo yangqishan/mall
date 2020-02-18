@@ -73,5 +73,37 @@ function  orders(id,userId,flag,number,price) {
         window.open("Orders.html?id="+id+"&userId="+userId+"&flag="+flag+"&number="+number+"&price="+price)
     }
 }
+//创建订单
+function createOrders(numbers,money,payss,addressId,type){
+    var id=getQueryString("id")//商品id(或者数组)
+    var userId=getQueryString("userId")//会员账号(或者字符串数组)
+    var flag=getQueryString("flag")//标识(或者字符串数组)
+    var number=getQueryString("number")//数量(或者字符串数组)
+    var price=getQueryString("price")//价格(或者字符串数组)
+    //异步请求创建订单
+    $.ajax({
+        url:"orders/create",
+        type:"post",
+        dataType:"json",
+        data:{
+            goodsId:id,//商品id数组
+            flag:flag,//标识数组
+            number:number,//数量数组
+            price:price,//价格数组
+            userId:userId,//会员账号
+            numbers:numbers,//总数
+            money:money,//总金额
+            payss:payss,//支付方式
+            addressId:addressId,//收地地址id
+            type:type//订单类型
+        },
+        success:function (data) {
+            layer.msg("订单生产成功",{icon:1,time:1500},function (index) {
+                window.location.href="user_order.html?userXh="+userId
+            })
+        }
+    })
+
+}
 
 

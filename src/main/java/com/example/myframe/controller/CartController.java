@@ -32,14 +32,16 @@ public class CartController {
         cartBean.setNumber(number);
         cartBean.setUserXh(userXh);
         cartBean.setPrice(price);
+        cartBean.setMoney(price);
         CartBean cartBean1=cartService.get(cartBean);
         //判断是都添加
         if(cartBean1!=null){
             cartBean.setNumber(cartBean1.getNumber()+number);
-            cartBean.setMoney((cartBean1.getNumber()+number)*cartBean.getPrice());
+            cartBean.setMoney((cartBean1.getNumber()+number)*cartBean1.getPrice());
             //重新修改数量和金额
             cartService.edit(cartBean);
         }else{
+
             //添加到数据库
             cartService.add(cartBean);
         }
@@ -56,5 +58,16 @@ public class CartController {
     public RestResponse get(@RequestParam(value="xh") String xh){
         List<CartFavoritesVo> list=cartService.getByXh(xh);
         return new RestResponse(ResultEnum.SUCCESS,list);
+    }
+
+    /**
+     * 购物车删除
+     * @param id
+     * @return
+     */
+    @RequestMapping(value="/del")
+    public RestResponse del(@RequestParam(value="id") String id){
+        cartService.removeById(id);
+        return new RestResponse(ResultEnum.SUCCESS);
     }
 }

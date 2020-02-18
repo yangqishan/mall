@@ -2,7 +2,9 @@ package com.example.myframe.controller;
 
 import com.example.myframe.common.consts.ResultEnum;
 import com.example.myframe.common.response.RestResponse;
+import com.example.myframe.entity.AddressBean;
 import com.example.myframe.entity.GoodsBean;
+import com.example.myframe.service.AddressService;
 import com.example.myframe.service.GoodsService;
 import com.example.myframe.util.JsonUtil;
 import com.example.myframe.vo.BrandVo;
@@ -27,6 +29,8 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private AddressService addressService;
     /**
      * 获取所有的商品
      * @return
@@ -36,6 +40,7 @@ public class GoodsController {
         List<GoodsBean> list=goodsService.getByFlag("正常");
         return new RestResponse(ResultEnum.SUCCESS,list);
     }
+
 
     /**
      * 根据不同类型查询商品
@@ -85,7 +90,7 @@ public class GoodsController {
         map.put("favorites",list1);
         return new RestResponse(ResultEnum.SUCCESS,map);
     }
-    //根据id查询商品的信息
+    //根据id查询商品的详细信息
     @RequestMapping(value="/getById")
     public RestResponse getById(@RequestParam(value="goods_id") int good_id){
         //获取详细信息
@@ -145,5 +150,44 @@ public class GoodsController {
     public RestResponse getLike(@RequestParam(value="name") String name){
         List<GoodsBean> like=goodsService.getLike(name);
         return new RestResponse(ResultEnum.SUCCESS,like);
+    }
+
+    /**
+     * 生成订单信息
+     * @param goodsId
+     * @return
+     */
+    @RequestMapping(value="/orders")
+    public RestResponse get(@RequestParam(value="goodsId") int[] goodsId,
+                            @RequestParam(value="userXh") String userXh,
+                            @RequestParam(value="flag") String[] flag,
+                            @RequestParam(value="number") int[] number,
+                            @RequestParam(value="price") Float[] price){
+        //创建map对象
+        Map<String,Object> map=new HashMap<>();
+        List<AddressBean> address=addressService.get(userXh);
+        map.put("address",address);
+        //将所有商品查询出来
+        List<GoodsBean> list=goodsService.gets(goodsId);
+        List<GoodsVo> products=new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            GoodsVo goodsVo=new GoodsVo();
+            goodsVo.setId(list.get(i).getId());
+            goodsVo.setName(list.get(i).getName());
+            goodsVo.setDetails(list.get(i).getDetails());
+            goodsVo.setImg(list.get(i).getImg());
+            if(flag[i].equals("特价--")||flag[i].equals("积分")||flag[i].equals("活动")){
+                goodsVo.setPrice(list.get(i).getPrice());
+                goodsVo.setDiscountPrice(price[i]);
+            }else{
+                goodsVo.setPrice(price[i]);
+                goodsVo.setDiscountPrice(price[i]);
+            }
+            goodsVo.setNumber(number[i]);
+            goodsVo.setFlag(flag[i]);
+            products.add(goodsVo);
+        }
+        map.put("products",products);
+        return new RestResponse(ResultEnum.SUCCESS,map);
     }
 }

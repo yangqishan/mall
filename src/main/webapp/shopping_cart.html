@@ -63,7 +63,7 @@
         </ul>
        </div>
        <div class="list_style">
-         <ul class="product_cart" v-for="(product,index) of products">
+         <ul class="product_cart" v-bind:id="'p'+index" v-for="(product,index) of products">
          <li class="title_width"><input v-bind:id="index" type="checkbox" v-on:click="change(index)"></li>
          <li class="title_width1">
          <a style="cursor: pointer" v-on:click="getDetails(product.goodsId)" class="product_img left"><img v-bind:src="product.img" /></a>
@@ -84,7 +84,7 @@
 		 </div>        
          </li>
          <li class="title_width4">￥{{product.money}}</li>
-         <li class="title_width5"><a style="cursor: pointer" v-on:click="del(product.id)">删除</a></li>
+         <li class="title_width5"><a style="cursor: pointer" v-on:click="del(product.id,index)">删除</a></li>
          </ul>
        </div>
      </div>
@@ -92,7 +92,7 @@
      <div class="cart_operating clearfix">
         <div class="cart_operating_style">
             <div class="cart_price">商品个数：<b>{{sum}}</b> 商品总价：（不含运费）<b>￥{{Money}}</b></div>
-           <div class="cart_btn"><a href="#" class="payment_btn"></a><a href="Products.html" class="continue_btn"></a></div>
+           <div class="cart_btn"><a style="cursor: pointer" v-on:click="orders()" class="payment_btn"></a><a href="Products.html" class="continue_btn"></a></div>
         </div>
      </div>
   </div>
@@ -129,9 +129,30 @@
             Money:0
         },
         methods:{
+            //查看商品详细信息
             getDetails:function(id){
                 //去后台访问详情信息
                 window.open("Product-detailed.html?id="+id)
+            },
+            //删除信息
+            del:function (id,pid) {
+                layer.confirm('确认要删除吗？',function(index){
+                    //捉到所有被选中的，发异步进行删除
+                    $.ajax({
+                        url:"cart/del",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                         id:id
+                        },
+                        success:function (data) {
+                            $("#p"+pid).remove()
+                        }
+                    })
+                layer.msg('删除成功', {icon: 1});
+              });
+
+
             },
             //修改价格统计总价
             change:function (event) {
@@ -159,6 +180,31 @@
                     }
                 }
 
+            },
+            //去订单页面
+            orders:function () {
+                var goodsId=[]//商品id数组
+                var flag=[]//标识数组
+                var number=[]//数量数组
+                var price=[]//价格数组
+                var userId=$("#userId").attr("title");//会员账号
+                //获取被选中的购物车的商品
+                var j=0
+                for(var i=0;i<this.products.length;i++){
+                    if($("#"+i).is(':checked')){
+                        goodsId[j]=this.products[i].goodsId
+                        flag[j]=this.products[i].flag
+                        number[j]=this.products[i].number
+                        price[j]=this.products[i].price
+                        j++
+                    }
+                }
+                if(goodsId.length==0){
+                    layer.msg("请选择商品",{icon:6,time:1500})
+                    return false
+                }
+                //去订单页面 id,userId,flag,number,price)
+                orders(goodsId,userId,flag,number,price);
             }
         }
     })
@@ -187,10 +233,7 @@
             return decodeURI(r[2]);
         return null;
     }
-    /*layer.confirm('确认要删除吗？',function(index){
-        //捉到所有被选中的，发异步进行删除
-        layer.msg('删除成功', {icon: 1});
-    });*/
+
 </script>
 </body>
 </html>

@@ -8,6 +8,7 @@ import com.example.myframe.entity.OrderBean;
 import com.example.myframe.entity.UserBean;
 import com.example.myframe.service.OrderService;
 import com.example.myframe.service.UserService;
+import com.example.myframe.vo.CartFavoritesVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,13 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao,OrderBean> implements
     }
 
     @Override
-    public OrderBean get(String name) {
-        return orderDao.get(name);
+    public List<CartFavoritesVo> getBydetailsId(int detailsId) {
+        return orderDao.getBydetailsId(detailsId);
+    }
+
+
+    @Override
+    public void add(List<OrderBean> list) {
+        orderDao.add(list);
     }
 }

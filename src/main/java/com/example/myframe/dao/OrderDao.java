@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.myframe.entity.OrderBean;
 import com.example.myframe.entity.UserBean;
+import com.example.myframe.vo.CartFavoritesVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +22,9 @@ public interface OrderDao extends BaseMapper<OrderBean> {
      */
     IPage<OrderBean> getPage();
 
-    OrderBean get(String name);
+    List<CartFavoritesVo> getBydetailsId(int detailsId);
 
+    void add(List<OrderBean> list);
 }
 
 

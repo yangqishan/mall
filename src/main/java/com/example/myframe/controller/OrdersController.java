@@ -68,7 +68,7 @@ public class OrdersController {
         OrderDetailsBean orderDetailsBean1=orderDetailsService.getOne();
         //订单id
         int detailsId=orderDetailsBean1.getId();
-        //创建订单详情lsit集合
+        //创建订单详情list集合
         List<OrderBean> list=new ArrayList<>();
         for(int i=0;i<goodsId.length;i++){
             //创建订单详情对象

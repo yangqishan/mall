@@ -112,8 +112,12 @@
                      if(data.data=="注册成功"){
                          layer.msg(data.data,{icon:6,time:1500});
                          window.location.href="Login.html"
+
+                     }else{
+                         layer.msg(data.data,{icon:5,time:1500});
                      }
-                     layer.msg(data.data,{icon:5,time:1500});
+
+
                  }
              })
          }
